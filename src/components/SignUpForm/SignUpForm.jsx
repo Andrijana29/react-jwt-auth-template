@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { signUp } from '../../services/authService';
+import { signUp } from '../../services/authService.js'
 import { UserContext } from '../../contexts/UserContext';
 
 const SignUpForm = () => {
@@ -12,7 +12,13 @@ const SignUpForm = () => {
     password: '',
     passwordConf: '',
   });
+  
+  const { username, password, passwordConf } = formData;
 
+  const handleChange = (evt) => {
+    setMessage("");
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();

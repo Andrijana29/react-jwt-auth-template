@@ -3,11 +3,14 @@ import { Link } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
+
   const handleSignOut = () => {
     // Clear the token from localStorage
     localStorage.removeItem('token');
     // Clear the user state
     setUser(null);
+  }
+
   return (
     <nav>
       {user ? (
@@ -27,6 +30,7 @@ const NavBar = () => {
     </nav>
   );
 };
+
 
 export default NavBar;
 
